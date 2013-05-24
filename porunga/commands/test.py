@@ -128,12 +128,15 @@ class PorungaTestCommand(SingleLabelCommand):
         proc = Popen(prog, stdout=PIPE, stderr=PIPE, shell=True)
         out, err = proc.communicate()
         result = out.strip()
+        result=result.replace('\r', '')
         timedelta = datetime.now() - start
 
         prog2 = 'cat %s' % fout
         proc2 = Popen(prog2, stdout=PIPE, stderr=PIPE, shell=True)
         out2, err2 = proc2.communicate()
         expected = out2.strip()
+
+        expected=expected.replace('\r', '')
 
         success = result == expected and proc.returncode == 0 and proc2.returncode == 0
         if success:
