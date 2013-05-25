@@ -16,7 +16,7 @@ def fibs(n, m):
 def main():
     fin = fileinput.input()
     n, m = map(int, re.findall(r'\d+', fin.readline()))
-    result = ' '.join([str(f) for f in fibs(n, m)])
+    result = '\n'.join([str(f) for f in fibs(n, m)])
     sys.stdout.write(result)
 
 
